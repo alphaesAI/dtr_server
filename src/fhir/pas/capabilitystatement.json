@@ -1,0 +1,55 @@
+{
+    "resourceType": "CapabilityStatement",
+    "id": "pas-payer-service",
+    "url": "http://hl7.org/fhir/us/davinci-pas/CapabilityStatement/pas-payer-service",
+    "version": "2.2.1",
+    "name": "PASPayerService",
+    "title": "PAS Payer Service",
+    "status": "active",
+    "experimental": false,
+    "date": "2026-03-11",
+    "publisher": "HL7 International",
+    "text": {
+      "status": "generated",
+      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">PAS Payer Server CapabilityStatement</div>"
+    },
+    "kind": "instance",
+    "implementation": {
+      "description": "PAS Payer Server FHIR endpoint",
+      "url": "http://localhost:8000/fhir"
+    },
+    "software": {
+      "name": "PAS Payer Server",
+      "version": "1.0.0"
+    },
+    "fhirVersion": "4.0.1",
+    "format": ["json"],
+    "rest": [
+      {
+        "mode": "server",
+        "documentation": "PAS Payer service supporting Subscriptions and Claim $submit.",
+        "resource": [
+          {
+            "type": "Subscription",
+            "interaction": [
+              { "code": "create" },
+              { "code": "update" },
+              { "code": "delete" }
+            ]
+          },
+          {
+            "type": "Claim",
+            "interaction": [
+              { "code": "create" }
+            ],
+            "operation": [
+              {
+                "name": "submit",
+                "definition": "http://hl7.org/fhir/us/davinci-pas/OperationDefinition/Claim-submit"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
